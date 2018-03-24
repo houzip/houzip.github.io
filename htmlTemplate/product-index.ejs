@@ -1,0 +1,170 @@
+<%@ page  isELIgnored="false"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" session="true"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<c:set var="ctx" value="${pageContext.request.contextPath}"></c:set>
+<c:set var="ctxpath" value="${pageContext.request.contextPath}"></c:set>
+<c:set var="ctxfullpath" value="${pageContext.request.scheme}://${pageContext.request.serverName}:${pageContext.request.serverPort}${pageContext.request.contextPath}"></c:set>
+<c:set var="session" value="${USER}"></c:set>
+<c:set var="menus" value="${MENUS}"></c:set>
+<c:set var="interval" value="${INTERVAL}"></c:set>
+
+
+<c:choose>
+    <c:when test="${ctx == '/'}">
+        <c:set var="ctx" value="${ctx}"></c:set>
+        <c:set var="ctxfullpath" value="${ctxfullpath}"></c:set>
+    </c:when>
+    <c:otherwise>
+        <c:set var="ctx" value="${ctx}/"></c:set>
+        <c:set var="ctxfullpath" value="${ctxfullpath}/"></c:set>
+    </c:otherwise>
+</c:choose>
+<c:set var="ctxaction" value="${ctx}"></c:set>
+<c:set var="ctx" value="${ctx}"></c:set>
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html lang="en" class="ie6" <@ if(data.htmlWebpackPlugin.files.manifest) { @> manifest="<@= data.htmlWebpackPlugin.files.manifest @>"<@ } @>> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="ie7" <@ if(data.htmlWebpackPlugin.files.manifest) { @> manifest="<@= data.htmlWebpackPlugin.files.manifest @>"<@ } @>> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="ie8" <@ if(data.htmlWebpackPlugin.files.manifest) { @> manifest="<@= data.htmlWebpackPlugin.files.manifest @>"<@ } @>> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="ie9" <@ if(data.htmlWebpackPlugin.files.manifest) { @> manifest="<@= data.htmlWebpackPlugin.files.manifest @>"<@ } @>> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="" <@ if(data.htmlWebpackPlugin.files.manifest) { @> manifest="<@= data.htmlWebpackPlugin.files.manifest @>"<@ } @>> <!--<![endif]-->
+<head>
+    <base href="${ctxpath}/">
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <link href="${ctxpath}/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <@ if (data.htmlWebpackPlugin.options.urlPort) { @>
+    <script>
+      // 开发环境下定位端口
+      var ___pageUrl = window.location.protocol + '//' + window.location.hostname + ':<@= data.htmlWebpackPlugin.options.urlPort @>/';
+    </script>
+    <@ } else { @>
+    <script>
+      // 发布环境下定位
+      var ___pageUrl = '${ctxpath}/dist/'
+    </script>
+    <@ } @>
+    
+    
+    <@ if (data.htmlWebpackPlugin.options.meta) { @>
+    <@ for (var key in data.htmlWebpackPlugin.options.meta) { @>
+    <meta name="<@= key @>" content="<@= data.htmlWebpackPlugin.options.meta[key] @>">
+    <@ } @>
+    <@ } @>
+
+    <title><@= data.htmlWebpackPlugin.options.title || 'XWeb Home Next'@></title>
+
+    <@ if (data.htmlWebpackPlugin.options.mobile) { @>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <@ } @>
+
+    <@ for (var css in data.htmlWebpackPlugin.files.css) { @>
+    <link href="<@= data.htmlWebpackPlugin.options.publicPath @><@= data.htmlWebpackPlugin.files.css[css].replace(data.webpackConfig.output.publicPath, '') @>" rel="stylesheet">
+    <@ } @>
+
+    <@ if (data.htmlWebpackPlugin.options.baseHref) { @>
+    <base href="<@= data.htmlWebpackPlugin.options.baseHref @>" />
+    <@ } @>
+
+    <style>
+        @font-face {
+            font-family: 'anticon';
+            src: url('${ctxpath}/dist/assets/font/iconfont.eot'); /* IE9*/
+            src:
+                /* IE6-IE8 */
+                    url('${ctxpath}/dist/assets/font/iconfont.eot?#iefix') format('embedded-opentype'),
+                        /* chrome、firefox */
+                    url('${ctxpath}/dist/assets/font/iconfont.woff') format('woff'),
+                        /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+                    url('${ctxpath}/dist/assets/font/iconfont.ttf') format('truetype'),
+                        /* iOS 4.1- */
+                    url('${ctxpath}/dist/assets/font/iconfont.svg#iconfont') format('svg');
+        }
+    </style>
+</head>
+
+<body>
+<div id="react-content" style="width: 100%; height: 100%;"></div>
+<script type="text/javascript" src='${ctxpath}/js/tripledes.js'></script>
+<script type="text/javascript" src='${ctxpath}/js/mode-ecb.js'></script>
+<script>
+    var GLOBAL_XSMART_HOST = '${ctx}';
+    var GLOBAL_XSMART_HOST_FULL = '${ctxfullpath}';
+</script>
+<script type="text/javascript">
+  // TODO 判断是否需要自动刷新
+  window._xweb_view_type = { viewType: 'jsp' };
+  window._xweb_view_initialState = { initdata: 1 };
+
+  window.___INITIAL_ENV__ = {};
+  window.___INITIAL_INIT__ = {};
+  window.___INITIAL_ENV__.version = '1.0.0';
+  window.___INITIAL_ENV__.host = '${ctx}';
+  window.___INITIAL_ENV__.hostFullPath = '${ctxfullpath}';
+  window.___INITIAL_ENV__.baseRoot = '${ctxpath}';
+  window.___INITIAL_ENV__.appRoot = '${ctxpath}/index';
+  window.___INITIAL_ENV__.routerRoot = '/index';
+  
+  window.___INITIAL_ENV__.userId = '9999';
+  window.___INITIAL_ENV__.userName = '系统用户';
+  window.___INITIAL_ENV__.sessionId;
+  window.___INITIAL_ENV__.appWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+  window.___INITIAL_ENV__.appHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
+  window.___INITIAL_ENV__.socketHost = '${ctxpath}ws/&inquiryId=ps';
+  window.___INITIAL_ENV__.refrashTime = 120;//刷新时间2分钟
+  window.___INITIAL_INIT__.session = '${session}'; //用户信息
+  window.___INITIAL_INIT__.menus = '${menus}'; //用户信息
+  window.___INITIAL_INIT__.token = '${X-CSRF-Token}'; // 加密令牌信息
+  window.___INITIAL_ENV__.interval = '${INTERVAL}'; // 登录超时时间
+</script>
+
+
+<@ if (data.htmlWebpackPlugin.options.unsupportedBrowser) { @>
+<style>.unsupported-browser { display: none; }</style>
+<div class="unsupported-browser">
+    Sorry, your browser is not supported.  Please upgrade to
+    the latest version or switch your browser to use this site.
+    See <a href="http://outdatedbrowser.com/">outdatedbrowser.com</a>
+    for options.
+</div>
+<@ } @>
+
+<@ if (data.htmlWebpackPlugin.options.appMountId) { @>
+<div id="<@= data.htmlWebpackPlugin.options.appMountId@>"></div>
+<@ } @>
+
+<@ if (data.htmlWebpackPlugin.options.appMountIds && data.htmlWebpackPlugin.options.appMountIds.length > 0) { @>
+<@ for (var index in data.htmlWebpackPlugin.options.appMountIds) { @>
+<div id="<@= data.htmlWebpackPlugin.options.appMountIds[index]@>"></div>
+<@ } @>
+<@ } @>
+
+<@ if (data.htmlWebpackPlugin.options.window) { @>
+<script>
+    <@ for (var varName in data.htmlWebpackPlugin.options.window) { @>
+    window['<@=varName@>'] = <@= JSON.stringify(data.htmlWebpackPlugin.options.window[varName]) @>;
+      <@ } @>
+</script>
+<@ } @>
+
+<@ if (data.htmlWebpackPlugin.options.nodeEnv) { @>
+<script>
+    var window['nodeEnv'] = data.htmlWebpackPlugin.options.___env;
+</script>
+<@ } @>
+
+<@ if (data.htmlWebpackPlugin.options.dll) { @>
+<script>
+  document.write("<script type='text/javascript' src='"+ ___pageUrl +"<@= data.htmlWebpackPlugin.options.publicPath @><@= data.htmlWebpackPlugin.options.dll.replace(data.webpackConfig.output.publicPath, '')@>/vendorsDll.js'><\/script>");
+</script>
+<@ } @>
+
+<@ for (var chunk in data.htmlWebpackPlugin.files.chunks) { @>
+<script type='text/javascript' src='<@= data.htmlWebpackPlugin.options.publicPath @><@= data.htmlWebpackPlugin.files.chunks[chunk].entry.replace(data.webpackConfig.output.publicPath, "") @>' />
+<@ } @>
+
+<@ if (data.htmlWebpackPlugin.options.devServer) { @>
+<script type='text/javascript' src='<@= data.htmlWebpackPlugin.options.devServer@>/webpack-dev-server.js' />
+<@ } @>
+
+</body>
+</html>

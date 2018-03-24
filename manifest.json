@@ -1,6 +1,6 @@
 {
-  "short_name": "HOME NEXT",
-  "name": "HOME NEXT App",
+  "short_name": "证券客户端",
+  "name": "证券客户端",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,8 +8,8 @@
       "type": "image/png"
     }
   ],
-  "start_url": "./index.html",
+  "start_url": "./",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#2196F3",
+  "background_color": "#2196F3"
 }

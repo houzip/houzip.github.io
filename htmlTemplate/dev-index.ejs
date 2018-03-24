@@ -11,9 +11,6 @@
   <script>
     // 开发环境下定位端口
     var ___pageUrl = window.location.protocol + '//' + window.location.hostname + ':<@= data.htmlWebpackPlugin.options.urlPort @>/';
-    function getContextPath() {
-      return window.location.pathname.substring(0, window.location.pathname.indexOf("/",2));
-    }
   </script>
   <@ } else { @>
   <script>
@@ -49,6 +46,10 @@
 <body>
 <div id="react-content" style="width: 100%; height: 100%;"></div>
 <script type="text/javascript">
+  function getContextPath() {
+    return window.location.pathname.substring(0, window.location.pathname.indexOf("/",2));
+  }
+  
   // TODO 判断是否需要自动刷新
   window._xweb_view_type = { viewType: 'html' };
   window._xweb_view_initialState = { initdata: 1 };
